@@ -1,0 +1,19 @@
+.sub-category {
+  display: none;
+}
+
+.active-sub-category {
+  display: block;
+}
+
+.duas-div {
+  display: none;
+}
+
+.active-duas-div {
+  display: flex;
+}
+
+.active-dua-div {
+  color: #1fa45b;
+}

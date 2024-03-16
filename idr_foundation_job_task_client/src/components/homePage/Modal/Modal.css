@@ -1,0 +1,7 @@
+.color img {
+  display: none;
+}
+
+.active-color img {
+  display: block;
+}
