@@ -5,9 +5,9 @@ import { Dua } from "@/commonTypes/commonTypes";
 
 const CategoryItems = ({ dua, order }: { dua: Dua; order: number }) => {
   return (
-    <div className="mt-4">
+    <div className="lg:mt-4">
       <h3 className=" px-2 py-3 bg-white  rounded-lg">
-        <span className="text-[#1FA45B]">Section:</span>
+        <span className="text-[#1FA45B]">Section: </span>
         {dua.category}
       </h3>
       <div>

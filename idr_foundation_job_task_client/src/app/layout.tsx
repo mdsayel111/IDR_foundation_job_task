@@ -10,6 +10,7 @@ import Avatar from "@/components/homePage/Avatar/Avatar";
 import Drawar from "@/components/homePage/Drawar/Drawar";
 import CategoryNav from "@/components/homePage/CategoryNav/CategoryNav";
 import CategoryItems from "@/components/homePage/CategoryItems/CategoryItems";
+import NavDrawar from "@/components/homePage/NavDrawar/NavDrawar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,12 +29,21 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className} style={{ backgroundColor: "#EBEEF2" }}>
-        <div className="flex w-full">
-          <div className="w-[10%]">
+        <div className="flex lg:hidden justify-between items-center w-[90%] mx-auto mt-6">
+          <h1 className="text-2xl">{"< Dua Page"}</h1>
+          <Drawar />
+        </div>
+        <div className="flex lg:hidden items-center w-[90%] mx-auto mt-6 bg-white p-3 rounded-xl">
+          <NavDrawar data={categorys} />
+          <h1 className="text-2xl mx-auto">Menu</h1>
+        </div>
+
+        <div className="flex w-[90%] lg:w-full mx-auto">
+          <div className="lg:w-[10%] w-0">
             <Navbar />
           </div>
-          <div className="mt-5 mx-8  w-full">
-            <div className="flex justify-between">
+          <div className="mt-5 lg:mx-8 w-full">
+            <div className="lg:flex justify-between hidden ">
               <h1 className="text-2xl">Dua Page</h1>
               <div className="flex space-x-4 items-center">
                 <SeachBar />
@@ -42,7 +52,7 @@ export default async function RootLayout({
               </div>
             </div>
             <div className="flex gap-8">
-              <div className="w-[66%]">
+              <div className="w-[66%] hidden lg:block">
                 <CategoryNav data={categorys} />
               </div>
               <div className=" flex-grow mt-4">{children}</div>

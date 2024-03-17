@@ -23,7 +23,7 @@ const navLinkArr = [
 
 const Navbar = () => {
   return (
-    <div className="h-[100vh] overflow-y-scroll flex flex-col items-center space-y-4 ml-5 mt-5 bg-[#FFFFFF] rounded-2xl py-10">
+    <div className="h-[100vh] overflow-y-scroll hidden  lg:flex flex-col items-center space-y-4 ml-5 mt-5 bg-[#FFFFFF] rounded-2xl py-10">
       <NavWithLogo
         className="cursor-pointer"
         src="https://duaruqyah.com/assets/dua-logo.svg"

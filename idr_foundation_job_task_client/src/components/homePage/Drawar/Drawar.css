@@ -1,6 +1,6 @@
 .active-setting::before {
   content: "";
-  height: 37px;
+  height: 55px;
   width: 5px;
   background: #1fa45b;
   border-top-left-radius: 5px;

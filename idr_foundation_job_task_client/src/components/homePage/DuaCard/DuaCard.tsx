@@ -7,7 +7,7 @@ import { CiShuffle } from "react-icons/ci";
 import { FaPlay, FaRegLightbulb } from "react-icons/fa";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import { IoShareSocialOutline } from "react-icons/io5";
-import { MdContentCopy } from "react-icons/md";
+import { MdContentCopy, MdOutlinePauseCircleFilled } from "react-icons/md";
 import Modal from "../Modal/Modal";
 import "./DuaCard.css";
 
@@ -86,12 +86,13 @@ const DuaCard = ({ dua, order }: { dua: Dua; order: number }) => {
     setIsPlay(true);
     // clear all interval
     intervalArr.map((intervalId) => clearInterval(intervalId));
-    //
+    // get interval id
     const setIntervalId: any = setInterval(() => {
       setValue((value) => value + 100 / (audioDuration / 1000));
     }, 1000);
     // set interval id in interval array
     setIntervalArr([...intervalArr, setIntervalId]);
+    setIsPlay(true);
   };
   // clear all interval if input range value >= 100
   if (value >= 100) {
@@ -110,42 +111,37 @@ const DuaCard = ({ dua, order }: { dua: Dua; order: number }) => {
             height={30}
             alt="img"
           />
-          <p className="text-[#1FA45B] font-bold">1. {dua.dua_name}</p>
+          <p className="text-[#1FA45B] font-bold">
+            {dua.id} {dua.dua_name}
+          </p>
         </div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum eaque
-          libero fugiat ducimus qui quis atque beatae deleniti molestias aut.
-          Quis veritatis expedita laboriosam cum nobis recusandae qui harum
-          velit modi, saepe hic dolorem odit facilis quaerat perferendis sunt
-          enim animi deserunt nostrum alias asperiores numquam dignissimos
-          exercitationem voluptatum? Dolore.\
-        </p>
-        <h2 className="text-4xl text-right">
-          لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيْكَ لَهُ، لَهُ الْمُلْكُ
-          وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ الْجَدِّ مِنْكَ الْجَدُّ
-        </h2>
+        <p>{dua.dua_description}</p>
+        <h2 className="text-4xl text-right">{dua.dua}</h2>
         <p>
           Transliteration: Laa ilaaha illallahu wahdahu laa sharika lahu,
           lahul-mulku wa lahul-hamdu wa huwa 'alaa kulli shay'in qadir.
           Allaahumma laa maani'a limaa a'taita wa laa mu'tia limaa mana'ta wa
           laa yanfa'u dhal-jaddi minka al-jaddu
         </p>
-        <p>
-          Translation: There is none worthy of worship except Allah alone with
-          no partner or associate. He is the Dominion and to Him be all praise,
-          and He is able to do all things. O Allah, one can withhold what You
-          have given and none can give what You have withheld, and no wealth or
-          fortune can benefit anyone for from You comes all wealth and fortune.
-        </p>
         <p className="text-[#1FA45B]">Reference:</p>
-        <p>Bukhari: 844</p>
-        <div className="flex justify-between items-center">
-          <div className="w-fit flex items-center gap-4">
+        <p>{dua.reference}</p>
+        <div className="flex flex-col lg:flex-row gap-4 justify-between lg:items-center">
+          <div className=" w-full lg:w-fit flex items-center gap-4">
             <button
               onClick={handleAudioPlay}
-              className="w-16 h-16 rounded-full bg-[#1FA45B] focus:outline-none"
+              className="w-8 h-8 lg:w-16 lg:h-16 rounded-full bg-[#1FA45B] focus:outline-none"
             >
-              <FaPlay className="text-white text-2xl mx-auto" id="play-btn" />
+              {isPlay ? (
+                <MdOutlinePauseCircleFilled
+                  className="text-white lg:text-4xl mx-auto"
+                  id="play-btn"
+                />
+              ) : (
+                <FaPlay
+                  className="text-white lg:text-2xl mx-auto"
+                  id="play-btn"
+                />
+              )}
             </button>
             <audio
               className="hidden"
@@ -153,15 +149,16 @@ const DuaCard = ({ dua, order }: { dua: Dua; order: number }) => {
               src="https://api.duaruqyah.com/duaaudiofinal/7.mp3"
             ></audio>
             {isPlay ? (
-              <div className="flex items-center gap-4">
+              <div className="flex w-[80%] lg:w-auto items-center gap-4">
                 <input
+                  className="w-[40%] lg:w-auto"
                   onChange={handleAudioOnchange}
                   type="range"
                   value={value + ""}
                   style={{ backgroundSize: `${value}%` }}
                 />
                 <p>
-                  00 /{" "}
+                  00 /
                   {
                     // convert duration milisecond to second and and render duration according duration > 10
                     Number((Number(duration / 1000 / 100) * value).toFixed(0)) <

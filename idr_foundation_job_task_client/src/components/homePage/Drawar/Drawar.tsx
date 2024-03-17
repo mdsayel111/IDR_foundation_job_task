@@ -2,7 +2,10 @@
 import React, { useState } from "react";
 import { RiSettings2Fill } from "react-icons/ri";
 import { IoLanguage } from "react-icons/io5";
-import "./Drawar.css"
+import { SlDrawer } from "react-icons/sl";
+import { RiApps2Line } from "react-icons/ri";
+import { AiOutlineFontSize } from "react-icons/ai";
+import "./Drawar.css";
 
 const Drawar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,7 +16,7 @@ const Drawar = () => {
         <button
           onClick={() => setIsModalOpen(true)}
           className="text-[#1FA45B] text-2xl
-            focus:ring-4 focus:ring-blue-300 font-medium rounded-lg mb-2  focus:outline-none dark:focus:ring-blue-800"
+            focus:ring-4 focus:ring-blue-300 font-medium rounded-lg lg:mb-2  focus:outline-none dark:focus:ring-blue-800"
           type="button"
           data-drawer-target="drawer-right-example"
           data-drawer-show="drawer-right-example"
@@ -36,14 +39,44 @@ const Drawar = () => {
           {/* drawer component */}
           <div
             id="drawer-right-example"
-            className="fixed top-0 right-[320px] z-40 h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-white w-80 dark:bg-white"
+            className="fixed top-0 right-[250px] lg:right-[320px] z-40 h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-white w-60 lg:w-80 dark:bg-white "
             tabIndex={-1}
             aria-labelledby="drawer-right-label"
           >
+            <h1 className="text-lg lg:text-2xl text-center mt-10">Settings</h1>
             <div className="mt-8 space-y-3">
-              <div className="flex items-center gap-2 text-2xl active-setting">
-                <IoLanguage />
+              <div className="flex items-center gap-2 text-sm lg:text-xl active-setting bg-gray-200">
+                <div className="bg-[#EBEEF2] p-1 lg:p-2 rounded-full">
+                  <IoLanguage />
+                </div>
                 <h5>Language</h5>
+              </div>
+            </div>
+            <div className="mt-8 space-y-3">
+              <div className="flex items-center gap-2 text-sm lg:text-xl bg-gray-200 py-4 pl-4">
+                <div className="bg-[#EBEEF2] p-2 rounded-full">
+                  <SlDrawer />
+                </div>
+
+                <h5>Genaral</h5>
+              </div>
+            </div>
+            <div className="mt-8 space-y-3">
+              <div className="flex items-center gap-2 text-sm lg:text-xl bg-gray-200 py-4 pl-4">
+                <div className="bg-[#EBEEF2] p-2 rounded-full">
+                  <RiApps2Line />
+                </div>
+
+                <h5>Font</h5>
+              </div>
+            </div>
+            <div className="mt-8 space-y-3">
+              <div className="flex items-center gap-2 text-sm lg:text-xl bg-gray-200 py-4 pl-4">
+                <div className="bg-[#EBEEF2] p-2 rounded-full">
+                  <AiOutlineFontSize />
+                </div>
+
+                <h5>Appearance</h5>
               </div>
             </div>
           </div>
