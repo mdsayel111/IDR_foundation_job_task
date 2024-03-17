@@ -1,15 +1,27 @@
-import Category, { Dua } from "@/commonTypes/commonTypes";
-import Data from "@/commonTypes/commonTypes";
-import Avatar from "@/components/homePage/Avatar/Avatar";
+import { Dua } from "@/commonTypes/commonTypes";
 import CategoryItems from "@/components/homePage/CategoryItems/CategoryItems";
-import CategoryNav from "@/components/homePage/CategoryNav/CategoryNav";
-import Drawar from "@/components/homePage/Drawar/Drawar";
-import Navbar from "@/components/homePage/Navbar/Navbar";
-import SeachBar from "@/components/homePage/SearchBar/SeachBar";
 import axios from "axios";
 
-export default async function Home() {
-  // const duas: Dua[] = res.data.duas;
-  // console.log(categorys, duas);
-  return <h1>home</h1>;
-}
+const page = async ({
+  searchParams,
+}: {
+  searchParams: { category: string };
+}) => {
+  function decodeCategory(category: string) {
+    return category?.replace(/%20/g, " ");
+  }
+  const categoryName = decodeCategory(searchParams.category);
+  const res = await axios.get(
+    `https://idr-foundation-job-task-server.vercel.app/duas?category=${categoryName || "Dua's Importance"}`
+  );
+  const duas = res.data.duas;
+  return (
+    <div className="h-[100vh] overflow-y-scroll">
+      {duas.map((dua: Dua, index: number) => {
+        return <CategoryItems key={dua.id} dua={dua} order={index} />;
+      })}
+    </div>
+  );
+};
+
+export default page;

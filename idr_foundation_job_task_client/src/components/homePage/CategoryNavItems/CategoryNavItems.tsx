@@ -2,15 +2,15 @@
 import Category from "@/commonTypes/commonTypes";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 import SubCategory from "../SubCategory/SubCategory";
 import "./CategoryNavItems.css";
+import { useEffect } from "react";
 
 const CategoryNavItems = ({ data }: { data: Category[] }) => {
   const router = useRouter();
   // handle category div onclick
   function handleCategoryOnclick(e: any, categoryName: string) {
-    e.preventDefault();
+    // e.preventDefault();
     // Catch the navitem div that was clicked
     const navItemDiv = e.currentTarget;
     // Catch the navitem div which will be active
@@ -26,12 +26,12 @@ const CategoryNavItems = ({ data }: { data: Category[] }) => {
     // add active-sub-category className which need to active
     subcategoryDiv.classList.add("active-sub-category");
     console.log(categoryName);
-    router.push(`/${categoryName}`);
+    router.push(`http://localhost:3000?category=${categoryName}`);
   }
 
   // handle sub category div onclick
   function handleSubCategoryOnclick(e: any) {
-    e.preventDefault();
+    // e.preventDefault();
     // Catch the navitem div that was clicked
     const navItemDiv = e.currentTarget;
     // Catch the navitem div which will be active
@@ -45,23 +45,6 @@ const CategoryNavItems = ({ data }: { data: Category[] }) => {
     }
     // add active-sub-category className which need to active
     subcategoryDiv.classList.add("active-duas-div");
-  }
-
-  // handle duas div onclick
-  function handleDuasDivOnclick(e: any) {
-    // Catch the navitem div that was clicked
-    const navItemDiv = e.currentTarget;
-    // Catch the navitem div which will be active
-    const subcategoryDiv = navItemDiv.querySelector(".dua-div");
-    // catch all sub category which has className active-sub-category
-    const activeSubCategory: any =
-      document.getElementsByClassName("active-dua-div");
-    // remove active-sub-category className if activeSUbCategory.length > 0
-    if (activeSubCategory.length > 0) {
-      activeSubCategory[0].classList.remove("active-dua-div");
-    }
-    // add active-sub-category className which need to active
-    subcategoryDiv.classList.add("active-dua-div");
   }
   return (
     <div>
@@ -91,15 +74,18 @@ const CategoryNavItems = ({ data }: { data: Category[] }) => {
                 {Object.entries(category.sub_category).map(
                   ([subCategory, duas], index) => (
                     <>
-                      <div
-                        onClick={handleSubCategoryOnclick}
-                        className="relative before:w-3 before:h-3 before:bg-[#1FA45B] before:rounded-full before:block before:absolute before:top-2 -ml-[7px] cursor-pointer"
-                      >
-                        <h6 className="pl-6">{subCategory}</h6>
-                        {duas.map((dua, index) => (
-                          <SubCategory key={index} data={dua} />
-                        ))}
-                      </div>
+                      <a href={`#${subCategory}`}>
+                        <div
+                          onClick={handleSubCategoryOnclick}
+                          className="relative before:w-3 before:h-3 before:bg-[#1FA45B] before:rounded-full before:block before:absolute before:top-2 -ml-[7px] cursor-pointer"
+                        >
+                          <h6 className="pl-6">{subCategory}</h6>
+
+                          {duas.map((dua, index) => (
+                            <SubCategory key={index} data={dua} />
+                          ))}
+                        </div>
+                      </a>
                     </>
                   )
                 )}

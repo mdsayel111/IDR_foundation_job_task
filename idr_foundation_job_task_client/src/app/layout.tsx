@@ -1,16 +1,15 @@
+import Category from "@/commonTypes/commonTypes";
+import Avatar from "@/components/homePage/Avatar/Avatar";
+import CategoryNav from "@/components/homePage/CategoryNav/CategoryNav";
+import Drawar from "@/components/homePage/Drawar/Drawar";
+import NavDrawar from "@/components/homePage/NavDrawar/NavDrawar";
+import Navbar from "@/components/homePage/Navbar/Navbar";
+import SeachBar from "@/components/homePage/SearchBar/SeachBar";
+import axios from "axios";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
-import Category from "@/commonTypes/commonTypes";
-import axios from "axios";
-import Navbar from "@/components/homePage/Navbar/Navbar";
-import SeachBar from "@/components/homePage/SearchBar/SeachBar";
-import Avatar from "@/components/homePage/Avatar/Avatar";
-import Drawar from "@/components/homePage/Drawar/Drawar";
-import CategoryNav from "@/components/homePage/CategoryNav/CategoryNav";
-import CategoryItems from "@/components/homePage/CategoryItems/CategoryItems";
-import NavDrawar from "@/components/homePage/NavDrawar/NavDrawar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +23,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const res = await axios.get("http://localhost:5000/");
+  const res = await axios.get("https://idr-foundation-job-task-server.vercel.app/");
   const categorys: Category[] = res.data.categorys;
   return (
     <html lang="en">
