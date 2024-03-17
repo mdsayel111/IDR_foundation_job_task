@@ -119,9 +119,9 @@ const DuaCard = ({ dua, order }: { dua: Dua; order: number }) => {
         <h2 className="text-4xl text-right">{dua.dua}</h2>
         <p>
           Transliteration: Laa ilaaha illallahu wahdahu laa sharika lahu,
-          lahul-mulku wa lahul-hamdu wa huwa 'alaa kulli shay'in qadir.
-          Allaahumma laa maani'a limaa a'taita wa laa mu'tia limaa mana'ta wa
-          laa yanfa'u dhal-jaddi minka al-jaddu
+          lahul-mulku wa lahul-hamdu wa huwa alaa kulli shay in qadir 
+          Allaahumma laa maani a limaa a taita wa laa mu tia limaa mana ta wa
+          laa yanfa u dhal-jaddi minka al-jaddu
         </p>
         <p className="text-[#1FA45B]">Reference:</p>
         <p>{dua.reference}</p>

@@ -11,8 +11,7 @@ console.log(process.env.DB_PASS);
 // };
 
 const pool = new Pool({
-  connectionString:
-    "postgres://sayel111:efEU7QRc13JERy2D21x3h2mIlWuvCOsS@dpg-cnr8vqq1hbls73dufvh0-a/idr_foundation_job_task_2r9z",
+  connectionString: process.env.DB_URL,
   ssl: {
     rejectUnauthorized: false,
   },

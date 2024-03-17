@@ -26,7 +26,9 @@ const CategoryNavItems = ({ data }: { data: Category[] }) => {
     // add active-sub-category className which need to active
     subcategoryDiv.classList.add("active-sub-category");
     console.log(categoryName);
-    router.push(`http://localhost:3000?category=${categoryName}`);
+    router.push(
+      `https://idr-foundation-job-task-client.vercel.app?category=${categoryName}`
+    );
   }
 
   // handle sub category div onclick

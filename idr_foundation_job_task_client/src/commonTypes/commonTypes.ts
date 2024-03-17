@@ -1,4 +1,3 @@
-import { Category } from '@/commonTypes/commonTypes';
 export interface Dua {
     id: number
     dua_name: string;
