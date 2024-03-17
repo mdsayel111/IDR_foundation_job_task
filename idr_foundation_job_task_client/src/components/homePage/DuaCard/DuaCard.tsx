@@ -1,24 +1,17 @@
 "use client";
+import { Dua } from "@/commonTypes/commonTypes";
 import Image from "next/image";
-import { CiShuffle } from "react-icons/ci";
-import React, {
-  ChangeEventHandler,
-  MouseEventHandler,
-  useEffect,
-  useState,
-} from "react";
-import { FaPlay } from "react-icons/fa";
-import "./DuaCard.css";
-import { MdContentCopy } from "react-icons/md";
-import { FaBookmark } from "react-icons/fa";
-import { FaRegLightbulb } from "react-icons/fa";
-import { IoShareSocialOutline } from "react-icons/io5";
-import { IoMdInformationCircleOutline } from "react-icons/io";
-import { CiBookmark } from "react-icons/ci";
-import Modal from "../Modal/Modal";
+import { ChangeEventHandler, MouseEventHandler, useState } from "react";
 import toast from "react-hot-toast";
+import { CiShuffle } from "react-icons/ci";
+import { FaPlay, FaRegLightbulb } from "react-icons/fa";
+import { IoMdInformationCircleOutline } from "react-icons/io";
+import { IoShareSocialOutline } from "react-icons/io5";
+import { MdContentCopy } from "react-icons/md";
+import Modal from "../Modal/Modal";
+import "./DuaCard.css";
 
-const DuaCard = () => {
+const DuaCard = ({ dua, order }: { dua: Dua; order: number }) => {
   const [isPlay, setIsPlay] = useState<boolean>(false);
   const [isBookmark, setIsBookmark] = useState<boolean>(false);
   const [value, setValue] = useState<number>(0);
@@ -117,7 +110,7 @@ const DuaCard = () => {
             height={30}
             alt="img"
           />
-          <p className="text-[#1FA45B] font-bold">1. item name #id</p>
+          <p className="text-[#1FA45B] font-bold">1. {dua.dua_name}</p>
         </div>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum eaque
